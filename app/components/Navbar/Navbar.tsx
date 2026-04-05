@@ -130,6 +130,7 @@ export default function Navbar() {
               alt="Logo"
               width={60}
               height={60}
+              style={{ height: "auto" }}
             />
             <span className="text-xl font-bold text-gray-800 dark:text-white">
               Yellow Page Bangladesh

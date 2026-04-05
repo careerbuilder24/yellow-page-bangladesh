@@ -30,7 +30,8 @@ export default function MainCategories() {
         {cards.map((card, index) => (
           <div
             key={index}
-            className="flex flex-col justify-between p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-lg transition"
+            // className="flex flex-col justify-between p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-lg transition"
+          className="flex flex-col justify-between p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-lg border border-transparent hover:border-[#FBEE22] transition"
           >
             <div className="flex items-start gap-4">
               
@@ -49,10 +50,10 @@ export default function MainCategories() {
                 </p>
               </div>
             </div>
-
+           
             {/* Button */}
             <div className="mt-6 flex justify-end">
-              <button className="bg-yellow-400 hover:bg-yellow-500 text-black text-sm font-medium px-4 py-2 rounded-lg transition">
+              <button className="bg-[#FBEE22] hover:bg-[#f8e90e] text-black text-sm font-medium px-4 py-2 rounded-lg transition">
                 {card.button}
               </button>
             </div>
