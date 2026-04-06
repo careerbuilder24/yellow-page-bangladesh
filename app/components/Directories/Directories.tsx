@@ -1,66 +1,8 @@
 
-// import React from "react";
-// import { FaTshirt, FaBuilding, FaShoppingBag, FaDesktop, FaDatabase, FaMobileAlt, FaCar, FaPlane } from "react-icons/fa";
 
-// const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+'use client';
 
-// const categories = [
-//   { name: "Garments, Buying & Apparels", icon: <FaTshirt size={40} /> },
-//   { name: "Real Estate & Properties", icon: <FaBuilding size={40} /> },
-//   { name: "Shopping & eCommerce", icon: <FaShoppingBag size={40} /> },
-//   { name: "Computer & Electronics", icon: <FaDesktop size={40} /> },
-//   { name: "IT & Software", icon: <FaDatabase size={40} /> },
-//   { name: "Telecommunication", icon: <FaMobileAlt size={40} /> },
-//   { name: "Car & Vehicles", icon: <FaCar size={40} /> },
-//   { name: "Tours & Travels", icon: <FaPlane size={40} /> },
-// ];
-
-// export default function Directories() {
-//   return (
-//     <div>
-//       {/* Top A-Z Bar */}
-//       <div className="bg-[#FDEE21] p-3 flex flex-wrap items-center gap-2 justify-center">
-//         <span className="text-black font-semibold border border-black px-3 py-1">
-//           A-Z Business
-//         </span>
-//         {alphabet.map((letter) => (
-//           <button
-//             key={letter}
-//             className="border border-black text-black px-2 py-1 text-sm hover:bg-black hover:text-[#FDEE21] transition"
-//           >
-//             {letter}
-//           </button>
-//         ))}
-//       </div>
-
-//       {/* Categories Section */}
-//       <div className="bg-gray-100 py-10 px-4 text-center">
-//         <h2 className="text-3xl font-serif italic mb-6 text-black">
-//           Popular Categories
-//         </h2>
-
-//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-//           {categories.map((cat, index) => (
-//             <div
-//               key={index}
-//               className="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-md transition flex flex-col items-center justify-center gap-3"
-//             >
-//               <div className="text-black">{cat.icon}</div>
-//               <p className="text-gray-700 font-medium text-sm text-center">
-//                 {cat.name}
-//               </p>
-//             </div>
-//           ))}
-//         </div>
-
-//         <button className="mt-8 bg-black text-[#FDEE21] px-6 py-2 rounded hover:opacity-90 transition">
-//           ALL CATEGORIES
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-import React from "react";
+import React, { useRef } from "react";
 import {
   FaTshirt,
   FaBuilding,
@@ -70,6 +12,8 @@ import {
   FaMobileAlt,
   FaCar,
   FaPlane,
+  FaChevronLeft,
+  FaChevronRight,
 } from "react-icons/fa";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -86,6 +30,23 @@ const categories = [
 ];
 
 export default function Directories() {
+  // ✅ Proper TypeScript typing
+  const sliderRef = useRef<HTMLDivElement | null>(null);
+
+  const scrollLeft = () => {
+    sliderRef.current?.scrollBy({
+      left: -250,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollRight = () => {
+    sliderRef.current?.scrollBy({
+      left: 250,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div>
       {/* Top A-Z Bar */}
@@ -93,6 +54,7 @@ export default function Directories() {
         <span className="text-black font-semibold border border-black px-3 py-1">
           A-Z Business
         </span>
+
         {alphabet.map((letter) => (
           <button
             key={letter}
@@ -109,27 +71,48 @@ export default function Directories() {
           Popular Categories
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          {categories.map((cat, index) => (
-            <div
-              key={index}
-              className="bg-white p-6 border border-gray-200 rounded shadow-sm hover:shadow-lg transition flex flex-col items-center justify-center gap-4"
-            >
-              {/* Rounded Icon Background */}
-              <div className="w-16 h-16 flex items-center justify-center rounded-full bg-[#FDEE21] text-black transition duration-300 hover:bg-black hover:text-[#FDEE21] shadow-md">
-                {cat.icon}
+        {/* Slider Wrapper */}
+        <div className="relative max-w-6xl mx-auto">
+          
+          {/* Left Arrow */}
+          <button
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-black text-white p-2 rounded-full z-10 hover:bg-gray-800"
+          >
+            <FaChevronLeft />
+          </button>
+
+          {/* Slider */}
+          <div
+            ref={sliderRef}
+            className="flex overflow-x-auto gap-6 px-10 scrollbar-hide scroll-smooth"
+          >
+            {categories.map((cat, index) => (
+              <div
+                key={index}
+                className="min-w-[200px] flex flex-col items-center justify-center p-4"
+              >
+                {/* Icon */}
+                <div className="w-16 h-16 flex items-center justify-center rounded-full bg-[#FDEE21] text-black transition duration-300 hover:bg-black hover:text-[#FDEE21] shadow-md">
+                  {cat.icon}
+                </div>
+
+                {/* Text */}
+                <p className="text-gray-700 font-medium text-sm text-center mt-4">
+                  {cat.name}
+                </p>
               </div>
+            ))}
+          </div>
 
-              <p className="text-gray-700 font-medium text-sm text-center">
-                {cat.name}
-              </p>
-            </div>
-          ))}
+          {/* Right Arrow */}
+          <button
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-black text-white p-2 rounded-full z-10 hover:bg-gray-800"
+          >
+            <FaChevronRight />
+          </button>
         </div>
-
-        <button className="mt-8 bg-black text-[#FDEE21] px-6 py-2 rounded hover:opacity-90 transition">
-          ALL CATEGORIES
-        </button>
       </div>
     </div>
   );

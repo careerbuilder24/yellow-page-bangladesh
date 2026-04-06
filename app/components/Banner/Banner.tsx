@@ -62,7 +62,7 @@ export default function Banner() {
       ></iframe>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 bg-black/10"></div>
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 max-w-3xl">
