@@ -1,42 +1,10 @@
 
 // 'use client'
-// import React, { useState, useEffect } from "react";
+// import React from "react";
 // import Image from "next/image";
 // import Link from "next/link";
-// import {
-//   HiOutlineBell,
-//   HiOutlineGlobeAlt,
-//   HiOutlineSun,
-//   HiOutlineMoon,
-// } from "react-icons/hi";
 
 // export default function Navbar() {
-//   const [dark, setDark] = useState(false);
-
-//   // ✅ Load theme from localStorage on mount
-//   useEffect(() => {
-//     const savedTheme = localStorage.getItem("theme");
-
-//     if (savedTheme === "dark") {
-//       setDark(true);
-//       document.documentElement.classList.add("dark");
-//     } else {
-//       setDark(false);
-//       document.documentElement.classList.remove("dark");
-//     }
-//   }, []);
-
-//   // ✅ Update theme + save to localStorage
-//   useEffect(() => {
-//     if (dark) {
-//       document.documentElement.classList.add("dark");
-//       localStorage.setItem("theme", "dark");
-//     } else {
-//       document.documentElement.classList.remove("dark");
-//       localStorage.setItem("theme", "light");
-//     }
-//   }, [dark]);
-
 //   return (
 //     <nav className="w-full bg-white dark:bg-gray-900 shadow-md transition">
 //       <div className="w-full mx-auto px-4 py-3 flex items-center justify-between">
@@ -49,6 +17,7 @@
 //               alt="Logo"
 //               width={60}
 //               height={60}
+//               style={{ height: "auto" }}
 //             />
 //             <span className="text-xl font-bold text-gray-800 dark:text-white">
 //               Yellow Page Bangladesh
@@ -67,24 +36,6 @@
 //         {/* RIGHT SIDE */}
 //         <div className="hidden md:flex items-center gap-3">
 
-//           {/* ✅ WORKING Theme Toggle */}
-//           <button
-//             onClick={() => setDark(!dark)}
-//             className="bg-[#FBF107] w-14 h-8 flex items-center rounded-full px-1 relative transition"
-//           >
-//             <div
-//               className={`bg-white w-6 h-6 rounded-full flex items-center justify-center shadow transform transition duration-300 ${
-//                 dark ? "translate-x-6" : "translate-x-0"
-//               }`}
-//             >
-//               {dark ? (
-//                 <HiOutlineMoon className="text-gray-700 text-sm" />
-//               ) : (
-//                 <HiOutlineSun className="text-yellow-500 text-sm" />
-//               )}
-//             </div>
-//           </button>
-
 //           {/* Buttons */}
 //           <button className="bg-[#FBF107] px-4 py-2 rounded-lg text-sm font-semibold">
 //             Find Local Business
@@ -94,17 +45,14 @@
 //             Advertise with us
 //           </button>
 
-//           {/* Icons */}
-//           <HiOutlineBell className="text-xl text-gray-700 dark:text-white cursor-pointer" />
-
-//           <div className="flex items-center gap-1 text-sm font-semibold cursor-pointer text-gray-700 dark:text-white">
-//             <HiOutlineGlobeAlt className="text-xl" />
-//             EN ▼
-//           </div>
+//           {/* Login Button */}
+//           <button className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">
+//             Login
+//           </button>
 //         </div>
 
-//         {/* MOBILE */}
-//         <div className="md:hidden">
+//         {/* MOBILE MENU ICON */}
+//         <div className="md:hidden text-2xl cursor-pointer">
 //           ☰
 //         </div>
 //       </div>
@@ -112,32 +60,130 @@
 //   );
 // }
 
+
+// 'use client'
+// import React, { useState } from "react";
+// import Image from "next/image";
+// import Link from "next/link";
+
+// export default function Navbar() {
+//   const [isOpen, setIsOpen] = useState(false);
+
+//   return (
+//     <nav className="w-full bg-white dark:bg-gray-900 shadow-md transition">
+//       <div className="w-full mx-auto px-4 py-3 flex items-center justify-between">
+
+//         {/* LEFT SIDE */}
+//         <div className="flex items-center gap-4 md:gap-8">
+//           {/* Logo */}
+//           <div className="flex items-center gap-2 cursor-pointer">
+//             <Image
+//               src="https://i.postimg.cc/x8n10xYf/yellow.png"
+//               alt="Logo"
+//               width={50}
+//               height={50}
+//               style={{ height: "auto" }}
+//             />
+//             <span className="hidden sm:block text-lg md:text-xl font-bold text-gray-800 dark:text-white">
+//               Yellow Page Bangladesh
+//             </span>
+//           </div>
+
+//           {/* Desktop Menu */}
+//           <ul className="hidden md:flex items-center gap-4 lg:gap-6 text-gray-700 dark:text-gray-300 font-semibold text-sm">
+//             <li><Link href="/">Home</Link></li>
+//             <li><Link href="/">Our Products</Link></li>
+//             <li><Link href="/">Our Services</Link></li>
+//             <li><Link href="/">Business Categories</Link></li>
+//             <li><Link href="/contact">Contact</Link></li>
+//           </ul>
+//         </div>
+
+//         {/* RIGHT SIDE (Desktop) */}
+//         <div className="hidden md:flex items-center gap-2 lg:gap-3">
+//           <button className="bg-[#FBF107] px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-semibold">
+//             Find Local Business
+//           </button>
+
+//           <button className="bg-[#FBF107] px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-semibold">
+//             Advertise
+//           </button>
+
+//           <button className="bg-gray-800 text-white px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-semibold hover:bg-gray-700 transition">
+//             Login
+//           </button>
+//         </div>
+
+//         {/* MOBILE MENU BUTTON */}
+//         <div
+//           className="md:hidden text-2xl cursor-pointer"
+//           onClick={() => setIsOpen(!isOpen)}
+//         >
+//           {isOpen ? "✕" : "☰"}
+//         </div>
+//       </div>
+
+//       {/* MOBILE MENU */}
+//       {isOpen && (
+//         <div className="md:hidden px-4 pb-4 space-y-4 bg-white dark:bg-gray-900 shadow-md">
+//           <ul className="flex flex-col gap-3 text-gray-700 dark:text-gray-300 font-semibold text-sm">
+//             <li><Link href="/">Home</Link></li>
+//             <li><Link href="/">Our Products</Link></li>
+//             <li><Link href="/">Our Services</Link></li>
+//             <li><Link href="/">Business Categories</Link></li>
+//             <li><Link href="/contact">Contact</Link></li>
+//           </ul>
+
+//           <div className="flex flex-col gap-2 pt-2">
+//             <button className="bg-[#FBF107] px-4 py-2 rounded-lg text-sm font-semibold">
+//               Find Local Business
+//             </button>
+
+//             <button className="bg-[#FBF107] px-4 py-2 rounded-lg text-sm font-semibold">
+//               Advertise with us
+//             </button>
+
+//             <button className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">
+//               Login
+//             </button>
+//           </div>
+//         </div>
+//       )}
+//     </nav>
+//   );
+// }
+
 'use client'
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav className="w-full bg-white dark:bg-gray-900 shadow-md transition">
+    <nav className="w-full bg-white dark:bg-gray-900 shadow-md transition relative">
       <div className="w-full mx-auto px-4 py-3 flex items-center justify-between">
 
         {/* LEFT SIDE */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-3 md:gap-8">
+          {/* Logo */}
           <div className="flex items-center gap-2 cursor-pointer">
             <Image
               src="https://i.postimg.cc/x8n10xYf/yellow.png"
               alt="Logo"
-              width={60}
-              height={60}
-              style={{ height: "auto" }}
+              width={45}
+              height={45}
             />
-            <span className="text-xl font-bold text-gray-800 dark:text-white">
+
+            {/* ✅ FIX: visible on mobile */}
+            <span className="block text-sm sm:text-lg md:text-xl font-bold text-gray-800 dark:text-white whitespace-nowrap">
               Yellow Page Bangladesh
             </span>
           </div>
 
-          <ul className="hidden md:flex items-center gap-6 text-gray-700 dark:text-gray-300 font-semibold text-sm">
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex items-center gap-4 lg:gap-6 text-gray-700 dark:text-gray-300 font-semibold text-sm">
             <li><Link href="/">Home</Link></li>
             <li><Link href="/">Our Products</Link></li>
             <li><Link href="/">Our Services</Link></li>
@@ -146,27 +192,69 @@ export default function Navbar() {
           </ul>
         </div>
 
-        {/* RIGHT SIDE */}
-        <div className="hidden md:flex items-center gap-3">
-
-          {/* Buttons */}
-          <button className="bg-[#FBF107] px-4 py-2 rounded-lg text-sm font-semibold">
+        {/* RIGHT SIDE (Desktop) */}
+        <div className="hidden md:flex items-center gap-2 lg:gap-3">
+          <button className="bg-[#FBF107] px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-semibold">
             Find Local Business
           </button>
 
-          <button className="bg-[#FBF107] px-4 py-2 rounded-lg text-sm font-semibold">
-            Advertise with us
+          <button className="bg-[#FBF107] px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-semibold">
+            Advertise
           </button>
 
-          {/* Login Button */}
-          <button className="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">
+          <button className="bg-gray-800 text-white px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm font-semibold hover:bg-gray-700 transition">
             Login
           </button>
         </div>
 
-        {/* MOBILE MENU ICON */}
-        <div className="md:hidden text-2xl cursor-pointer">
-          ☰
+        {/* MOBILE MENU BUTTON */}
+        <div
+          className="md:hidden text-2xl cursor-pointer z-50"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? "✕" : "☰"}
+        </div>
+      </div>
+
+      {/* 🔥 OVERLAY */}
+      <div
+        className={`fixed inset-0 bg-black/40 z-40 transition-opacity duration-300 ${
+          isOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setIsOpen(false)}
+      />
+
+      {/* 🔥 SLIDE-IN MOBILE MENU */}
+      <div
+        className={`fixed top-0 left-0 h-full w-72 bg-white dark:bg-gray-900 z-50 shadow-lg transform transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="p-5 space-y-6">
+
+          {/* Menu Links */}
+          <ul className="flex flex-col gap-4 text-gray-700 dark:text-gray-300 font-semibold">
+            <li><Link href="/" onClick={() => setIsOpen(false)}>Home</Link></li>
+            <li><Link href="/" onClick={() => setIsOpen(false)}>Our Products</Link></li>
+            <li><Link href="/" onClick={() => setIsOpen(false)}>Our Services</Link></li>
+            <li><Link href="/" onClick={() => setIsOpen(false)}>Business Categories</Link></li>
+            <li><Link href="/contact" onClick={() => setIsOpen(false)}>Contact</Link></li>
+          </ul>
+
+          {/* Buttons */}
+          <div className="flex flex-col gap-3 pt-4">
+            <button className="bg-[#FBF107] px-4 py-2 rounded-lg font-semibold">
+              Find Local Business
+            </button>
+
+            <button className="bg-[#FBF107] px-4 py-2 rounded-lg font-semibold">
+              Advertise with us
+            </button>
+
+            <button className="bg-gray-800 text-white px-4 py-2 rounded-lg font-semibold">
+              Login
+            </button>
+          </div>
         </div>
       </div>
     </nav>
