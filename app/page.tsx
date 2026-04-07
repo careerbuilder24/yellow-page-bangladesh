@@ -1,6 +1,7 @@
 import Banner from "./components/Banner/Banner";
 import Directories from "./components/Directories/Directories";
 import FirstPart from "./components/FirstPart/FirstPart";
+import Footer from "./components/Footer/Footer";
 import MainCategories from "./components/MainCategories/MainCategories";
 import Navbar from "./components/Navbar/Navbar";
 import WhyChoseUs from "./components/WhyChoseUs/WhyChoseUs";
@@ -14,6 +15,7 @@ export default function Home() {
       <MainCategories />
       <FirstPart />
       <WhyChoseUs />
+      <Footer/>
     </>
   );
 }
