@@ -263,8 +263,6 @@ const categories = [
 //   },
 // ];
 
-
-
 const companies = [
   { name: "Square Pharmaceuticals", url: "https://www.squarepharma.com.bd" },
   { name: "Beximco Group", url: "https://www.beximco.com" },
@@ -455,30 +453,20 @@ export default function Directories() {
             Bangladeshi Top Companies
           </h3>
 
-          {/* <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            {companies.map((company, index) => (
-              <p
-                key={index}
-                className="text-gray-700 text-sm hover:text-black hover:underline cursor-pointer transition"
-              >
-                {company}
-              </p>
-            ))}
-          </div> */}
-
+       
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-  {companies.map((company, index) => (
-    <a
-      key={index}
-      href={company.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-gray-700 text-sm hover:text-blue-600 hover:underline transition"
-    >
-      {company.name}
-    </a>
-  ))}
-</div>
+            {companies.map((company, index) => (
+              <a
+                key={index}
+                href={company.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-700 text-sm hover:text-blue-600 hover:underline transition"
+              >
+                {company.name}
+              </a>
+            ))}
+          </div>
 
           {/* 🔥 Multiple Directory Sections */}
           <div className="max-w-6xl mx-auto mt-12 space-y-12 text-left">
@@ -489,8 +477,6 @@ export default function Directories() {
                 </h3>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-                
-
                   {section.items.map((item, index) => (
                     <a
                       key={index}
