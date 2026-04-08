@@ -4,6 +4,7 @@ import FirstPart from "./components/FirstPart/FirstPart";
 import Footer from "./components/Footer/Footer";
 import MainCategories from "./components/MainCategories/MainCategories";
 import Navbar from "./components/Navbar/Navbar";
+import Services from "./components/Services/Services";
 import WhyChoseUs from "./components/WhyChoseUs/WhyChoseUs";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Banner />
       <Directories />
       <MainCategories />
+      <Services/>
       <FirstPart />
       <WhyChoseUs />
       <Footer/>
