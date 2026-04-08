@@ -6,6 +6,7 @@ import MainCategories from "./components/MainCategories/MainCategories";
 import Navbar from "./components/Navbar/Navbar";
 import Services from "./components/Services/Services";
 import WhyChoseUs from "./components/WhyChoseUs/WhyChoseUs";
+import Products from "./Products/Products";
 
 export default function Home() {
   return (
@@ -14,10 +15,11 @@ export default function Home() {
       <Banner />
       <Directories />
       <MainCategories />
-      <Services/>
+      <Services />
+      <Products />
       <FirstPart />
       <WhyChoseUs />
-      <Footer/>
+      <Footer />
     </>
   );
 }
