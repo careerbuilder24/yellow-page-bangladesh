@@ -161,6 +161,12 @@ export default function Navbar() {
               <li className="cursor-pointer hover:text-[#FCED23] transition">
                 <Link href="/contact">Contact</Link>
               </li>
+              <li className="cursor-pointer hover:text-[#FCED23] transition">
+                <Link href="/job">Job</Link>
+              </li>
+              <li className="cursor-pointer hover:text-[#FCED23] transition">
+                <Link href="/blog">Blog</Link>
+              </li>
             </ul>
           </div>
 
@@ -292,6 +298,12 @@ export default function Navbar() {
             </li>
             <li>
               <Link href="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link href="/job">Job</Link>
+            </li>
+            <li>
+              <Link href="/blog">Blog</Link>
             </li>
           </ul>
           <div className="flex flex-col gap-3 pt-4 border-t">
