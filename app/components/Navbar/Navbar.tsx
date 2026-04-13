@@ -19,7 +19,20 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  9;
+  const products = [
+    { name: "YP Micro App", link: "/YpMicroApp" },
+    { name: "SEO Services" },
+    { name: "Google & Facebook Ads" },
+    { name: "Tap & Review" },
+    { name: "Yellow Shop" },
+    { name: "Email Marketing" },
+    { name: "Social Media Management" },
+    { name: "Yellow Connect" },
+    { name: "Yellow Spot" },
+    { name: "Office 365" },
+    { name: "Yellow Pay" },
+  ];
   return (
     <>
       {/* NAVBAR */}
@@ -93,7 +106,14 @@ export default function Navbar() {
                           key={i}
                           className="p-3 rounded-lg hover:bg-[#FCED23] cursor-pointer transition"
                         >
-                          <h4 className="font-semibold">{item}</h4>
+                          {/* <h4 className="font-semibold">{item}</h4> */}
+                          {item === "YP Micro App" ? (
+                            <Link href="/YpMicroApp">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : (
+                            <h4 className="font-semibold">{item}</h4>
+                          )}
                           <p className="text-gray-500 text-sm mt-1">
                             Explore {item.toLowerCase()} solutions.
                           </p>
@@ -240,7 +260,7 @@ export default function Navbar() {
                 }`}
               >
                 <ul className="pl-4 text-sm space-y-2">
-                  {[
+                  {/* {[
                     "YP Micro App",
                     "SEO Services",
                     "Google & Facebook Ads",
@@ -254,6 +274,20 @@ export default function Navbar() {
                     "Yellow Pay",
                   ].map((item, i) => (
                     <li key={i}>{item}</li>
+                  ))} */}
+
+                  {products.map((item, i) => (
+                    <Link
+                      key={i}
+                      href={item.link || "#"}
+                      className="p-3 rounded-lg hover:bg-[#FCED23] cursor-pointer transition block"
+                    >
+                      <h4 className="font-semibold">{item.name}</h4>
+
+                      <p className="text-gray-500 text-sm mt-1">
+                        Explore {item.name.toLowerCase()} solutions.
+                      </p>
+                    </Link>
                   ))}
                 </ul>
               </div>
