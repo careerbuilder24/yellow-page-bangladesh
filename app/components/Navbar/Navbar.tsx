@@ -23,7 +23,7 @@ export default function Navbar() {
   const products = [
     { name: "YP Micro App", link: "/YpMicroApp" },
     { name: "SEO Services", link: "/seo-service" },
-    { name: "Google & Facebook Ads" },
+    { name: "Google & Facebook Ads", link: "/GoogleFacebookads" },
     { name: "Tap & Review" },
     { name: "Yellow Shop" },
     { name: "Email Marketing" },
@@ -107,19 +107,29 @@ export default function Navbar() {
                           className="p-3 rounded-lg hover:bg-[#FCED23] cursor-pointer transition"
                         >
                           {/* <h4 className="font-semibold">{item}</h4> */}
+
                           {/* {item === "YP Micro App" ? (
                             <Link href="/YpMicroApp">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "SEO Services" ? (
+                            <Link href="/seo-service">
                               <h4 className="font-semibold">{item}</h4>
                             </Link>
                           ) : (
                             <h4 className="font-semibold">{item}</h4>
                           )} */}
+
                           {item === "YP Micro App" ? (
                             <Link href="/YpMicroApp">
                               <h4 className="font-semibold">{item}</h4>
                             </Link>
                           ) : item === "SEO Services" ? (
                             <Link href="/seo-service">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "Google & Facebook Ads" ? (
+                            <Link href="/GoogleFacebookads">
                               <h4 className="font-semibold">{item}</h4>
                             </Link>
                           ) : (
