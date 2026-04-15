@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   FaSearch,
   FaGlobe,
@@ -6,25 +7,28 @@ import {
   FaLink,
   FaChartLine,
   FaCheckCircle,
+  FaUser,
+  FaPhone,
+  FaEnvelope,
+  FaBuilding,
 } from "react-icons/fa";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
 export default function Page() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <Navbar />
 
       <main className="bg-gray-100 min-h-screen">
-        
-        {/* ✅ HIDDEN SEO H1 (FOR VIEW SOURCE) */}
+        {/*  HIDDEN SEO H1 (FOR VIEW SOURCE) */}
         <h1 style={{ display: "none" }}>
           SEO Services Search Engine Optimization
         </h1>
 
         {/* HERO SECTION */}
         <div className="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
-          
           {/* IMAGE */}
           <div className="w-full md:w-1/2">
             <img
@@ -36,8 +40,7 @@ export default function Page() {
 
           {/* TEXT */}
           <div className="w-full md:w-1/2">
-            
-            {/* ✅ VISIBLE H1 (DESIGN SAME) */}
+            {/*  VISIBLE H1 (DESIGN SAME) */}
             <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
               SEO Services{" "}
               <span className="text-yellow-500">
@@ -51,7 +54,10 @@ export default function Page() {
               SEO strategies.
             </p>
 
-            <button className="mt-6 bg-yellow-500 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600">
+            <button
+              onClick={() => setShowModal(true)}
+              className="mt-6 bg-yellow-500 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-600"
+            >
               Get Started
             </button>
           </div>
@@ -134,6 +140,86 @@ export default function Page() {
           </div>
         </div>
       </main>
+
+      {showModal && (
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
+          onClick={() => setShowModal(false)}
+        >
+          <div
+            className="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-2 mb-3">
+              <div className="bg-yellow-400 w-7 h-7 rounded flex items-center justify-center font-bold">
+                Y
+              </div>
+              <h2 className="text-lg font-bold">
+                YP Micro App | Yellow Pages Bangladesh
+              </h2>
+            </div>
+
+            <p className="text-sm text-gray-600 mb-5">
+              Join thousands of businesses using YP Micro App to boost their
+              visibility
+            </p>
+
+            <div className="space-y-3">
+              <div className="flex items-center border rounded-lg px-3 bg-gray-50">
+                <FaUser className="text-gray-400 mr-2" />
+                <input
+                  className="w-full p-3 bg-transparent outline-none"
+                  placeholder="Enter your Full Names"
+                />
+              </div>
+
+              <div className="flex items-center border rounded-lg px-3 bg-gray-50">
+                <FaPhone className="text-gray-400 mr-2" />
+                <input
+                  className="w-full p-3 bg-transparent outline-none"
+                  placeholder="Enter your Phone Number"
+                />
+              </div>
+
+              <div className="flex items-center border rounded-lg px-3 bg-gray-50">
+                <FaEnvelope className="text-gray-400 mr-2" />
+                <input
+                  className="w-full p-3 bg-transparent outline-none"
+                  placeholder="Enter your Email Address"
+                />
+              </div>
+
+              <div className="flex items-center border rounded-lg px-3 bg-gray-50">
+                <FaBuilding className="text-gray-400 mr-2" />
+                <input
+                  className="w-full p-3 bg-transparent outline-none"
+                  placeholder="Company/Business Name"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-start mt-4 text-sm text-gray-600">
+              <input type="checkbox" className="mr-2 mt-1" />
+              <span>
+                I agree to receive marketing newsletters and promotional emails.
+              </span>
+            </div>
+
+            <div className="flex justify-end gap-3 mt-6">
+              <button
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 bg-gray-200 rounded-lg"
+              >
+                Cancel
+              </button>
+
+              <button className="px-5 py-2 bg-yellow-400 rounded-lg font-semibold">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>

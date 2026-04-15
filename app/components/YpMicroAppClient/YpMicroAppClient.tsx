@@ -1,8 +1,6 @@
-
-
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Head from "next/head";
 import {
   FaMapMarkerAlt,
@@ -20,6 +18,9 @@ export default function YpMicroAppClient() {
   const [activeTab, setActiveTab] = useState("Services");
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showModal, setShowModal] = useState(false);
+
+  // 🔥 refs for smooth height
+  const faqRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const tabs = ["Retail", "Professional Services", "E-commerce", "Services"];
 
@@ -44,21 +45,8 @@ export default function YpMicroAppClient() {
 
   return (
     <>
-      {/* SEO */}
       <Head>
         <title>YP Micro App | Smart Business Directory for Local Growth</title>
-        <meta
-          name="description"
-          content="Boost your local SEO with YP Micro App. Get discovered on high-traffic websites and attract more nearby customers."
-        />
-        <meta
-          name="keywords"
-          content="business directory, local SEO, YP Micro App, Yellow Pages"
-        />
-        <link
-          rel="canonical"
-          href="https://yourdomain.com/yp-micro-app"
-        />
       </Head>
 
       <Navbar />
@@ -69,8 +57,7 @@ export default function YpMicroAppClient() {
           <div className="w-full md:w-1/2">
             <img
               src="https://i.postimg.cc/y8FpwB5L/depositphotos-708300362-stock-photo-man-using-laptop-virtual-world.webp"
-              alt="Man using YP Micro App to manage local business listings"
-              loading="lazy"
+              alt="YP Micro App"
               className="rounded-2xl shadow-2xl w-full"
             />
           </div>
@@ -81,17 +68,15 @@ export default function YpMicroAppClient() {
             </h1>
 
             <p className="mt-4 text-gray-600">
-              Boost your local SEO and business visibility with YP Micro App.
+              Boost your local SEO and business visibility.
             </p>
 
-            <div className="flex gap-4 mt-6">
-              <button
-                onClick={() => setShowModal(true)}
-                className="bg-yellow-500 text-white px-6 py-3 rounded"
-              >
-                Get Started
-              </button>
-            </div>
+            <button
+              onClick={() => setShowModal(true)}
+              className="mt-6 bg-yellow-500 text-white px-6 py-3 rounded"
+            >
+              Get Started
+            </button>
           </div>
         </section>
 
@@ -105,118 +90,165 @@ export default function YpMicroAppClient() {
             <div key={i} className="mb-4 bg-white rounded-lg shadow">
               <button
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                className="w-full text-left px-4 py-3 font-medium flex justify-between"
+                className="w-full text-left px-4 py-3 font-medium flex justify-between items-center"
               >
                 {faq.q}
-                <span>{openFaq === i ? "-" : "+"}</span>
+
+                {/* icon animation */}
+                <span
+                  className={`transition-transform duration-300 ${
+                    openFaq === i ? "rotate-180" : ""
+                  }`}
+                >
+                  {openFaq === i ? "−" : "+"}
+                </span>
               </button>
 
-              {openFaq === i && (
+              {/* 🔥 smooth dynamic dropdown */}
+              <div
+                ref={(el) => {
+                  faqRefs.current[i] = el;
+                }}
+                style={{
+                  maxHeight:
+                    openFaq === i
+                      ? faqRefs.current[i]?.scrollHeight + "px"
+                      : "0px",
+                }}
+                className="overflow-hidden transition-all duration-500 ease-in-out"
+              >
                 <div className="px-4 pb-4 text-gray-600">{faq.a}</div>
-              )}
+              </div>
             </div>
           ))}
         </section>
-
-        {/* FAQ SCHEMA */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: faqs.map((faq) => ({
-                "@type": "Question",
-                name: faq.q,
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: faq.a,
-                },
-              })),
-            }),
-          }}
-        />
       </main>
 
       <Footer />
 
-      {/*  MODAL */}
-      {showModal && (
+      {/* MODAL */}
+      {/* {showModal && (
         <div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/50 flex items-center justify-center"
           onClick={() => setShowModal(false)}
         >
           <div
-            className="bg-white w-full max-w-md rounded-xl shadow-xl p-6"
+            className="bg-white p-6 rounded-xl w-full max-w-md"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center gap-2 mb-2">
-              <div className="bg-yellow-400 w-6 h-6 rounded flex items-center justify-center font-bold">
+            <h2 className="text-lg font-bold mb-4">Get Started</h2>
+
+            <input
+              type="text"
+              placeholder="Full Name"
+              className="w-full border p-3 mb-3 rounded"
+            />
+            <input
+              type="text"
+              placeholder="Phone"
+              className="w-full border p-3 mb-3 rounded"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              className="w-full border p-3 mb-3 rounded"
+            />
+
+            <div className="flex justify-end gap-2">
+              <button onClick={() => setShowModal(false)}>
+                Cancel
+              </button>
+              <button className="bg-yellow-400 px-4 py-2 rounded">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )} */}
+
+      {/* MODAL */}
+      {showModal && (
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
+          onClick={() => setShowModal(false)}
+        >
+          <div
+            className="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center gap-2 mb-3">
+              <div className="bg-yellow-400 w-7 h-7 rounded flex items-center justify-center font-bold">
                 Y
               </div>
               <h2 className="text-lg font-bold">
-                YP Micro App | Yellow Pages Kenya
+                YP Micro App | Yellow Pages Bangladesh
               </h2>
             </div>
 
-            <p className="text-sm text-gray-600 mb-4">
-              Join thousands of businesses using YP Micro App to boost their local visibility
+            <p className="text-sm text-gray-600 mb-5">
+              Join thousands of businesses using YP Micro App to boost their
+              local visibility
             </p>
 
+            {/* Inputs */}
             <div className="space-y-3">
-              <div className="flex items-center border rounded px-3">
+              <div className="flex items-center border rounded-lg px-3 bg-gray-50">
                 <FaUser className="text-gray-400 mr-2" />
                 <input
                   type="text"
                   placeholder="Enter your Full Names"
-                  className="w-full p-3 outline-none"
+                  className="w-full p-3 bg-transparent outline-none"
                 />
               </div>
 
-              <div className="flex items-center border rounded px-3">
+              <div className="flex items-center border rounded-lg px-3 bg-gray-50">
                 <FaPhone className="text-gray-400 mr-2" />
                 <input
                   type="text"
                   placeholder="Enter your Phone Number"
-                  className="w-full p-3 outline-none"
+                  className="w-full p-3 bg-transparent outline-none"
                 />
               </div>
 
-              <div className="flex items-center border rounded px-3">
+              <div className="flex items-center border rounded-lg px-3 bg-gray-50">
                 <FaEnvelope className="text-gray-400 mr-2" />
                 <input
                   type="email"
                   placeholder="Enter your Email Address"
-                  className="w-full p-3 outline-none"
+                  className="w-full p-3 bg-transparent outline-none"
                 />
               </div>
 
-              <div className="flex items-center border rounded px-3">
+              <div className="flex items-center border rounded-lg px-3 bg-gray-50">
                 <FaBuilding className="text-gray-400 mr-2" />
                 <input
                   type="text"
                   placeholder="Company/Business Name"
-                  className="w-full p-3 outline-none"
+                  className="w-full p-3 bg-transparent outline-none"
                 />
               </div>
             </div>
 
-            <div className="flex items-start mt-4 text-sm">
+            {/* Checkbox */}
+            <div className="flex items-start mt-4 text-sm text-gray-600">
               <input type="checkbox" className="mr-2 mt-1" />
               <span>
-                I agree to receive marketing newsletters and promotional emails from Yellow Pages Kenya.
+                I agree to receive marketing newsletters and promotional emails
+                from Yellow Pages Bangladesh. You can unsubscribe at any time.
               </span>
             </div>
 
+            {/* Buttons */}
             <div className="flex justify-end gap-3 mt-6">
               <button
                 onClick={() => setShowModal(false)}
-                className="px-4 py-2 bg-gray-200 rounded"
+                className="px-4 py-2 bg-gray-200 rounded-lg"
               >
                 Cancel
               </button>
 
-              <button className="px-4 py-2 bg-yellow-400 text-black rounded font-semibold">
+              <button className="px-5 py-2 bg-yellow-400 text-black rounded-lg font-semibold hover:bg-yellow-500 transition">
                 Submit
               </button>
             </div>
