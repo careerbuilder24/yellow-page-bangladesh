@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import {
   FaSearch,
@@ -15,20 +14,30 @@ export default function Page() {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-100 min-h-screen">
+
+      <main className="bg-gray-100 min-h-screen">
+        
+        {/* ✅ HIDDEN SEO H1 (FOR VIEW SOURCE) */}
+        <h1 style={{ display: "none" }}>
+          SEO Services Search Engine Optimization
+        </h1>
+
         {/* HERO SECTION */}
         <div className="max-w-7xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
+          
           {/* IMAGE */}
           <div className="w-full md:w-1/2">
             <img
               src="https://i.postimg.cc/jSNr8ptX/dfghsdf.png"
-              alt="SEO"
+              alt="SEO services search engine optimization"
               className="rounded-2xl shadow-2xl w-full"
             />
           </div>
 
           {/* TEXT */}
           <div className="w-full md:w-1/2">
+            
+            {/* ✅ VISIBLE H1 (DESIGN SAME) */}
             <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
               SEO Services{" "}
               <span className="text-yellow-500">
@@ -55,7 +64,6 @@ export default function Page() {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {/* CARD 1 */}
             <div className="bg-white p-6 rounded-xl shadow">
               <FaSearch className="text-yellow-500 text-xl mb-3" />
               <h3 className="font-semibold mb-2">Technical SEO Services</h3>
@@ -64,7 +72,6 @@ export default function Page() {
               </p>
             </div>
 
-            {/* CARD 2 */}
             <div className="bg-white p-6 rounded-xl shadow">
               <FaGlobe className="text-yellow-500 text-xl mb-3" />
               <h3 className="font-semibold mb-2">Local SEO</h3>
@@ -73,7 +80,6 @@ export default function Page() {
               </p>
             </div>
 
-            {/* CARD 3 */}
             <div className="bg-white p-6 rounded-xl shadow">
               <FaFileAlt className="text-yellow-500 text-xl mb-3" />
               <h3 className="font-semibold mb-2">Content Optimization</h3>
@@ -82,7 +88,6 @@ export default function Page() {
               </p>
             </div>
 
-            {/* CARD 4 */}
             <div className="bg-white p-6 rounded-xl shadow">
               <FaLink className="text-yellow-500 text-xl mb-3" />
               <h3 className="font-semibold mb-2">Link Building</h3>
@@ -91,7 +96,6 @@ export default function Page() {
               </p>
             </div>
 
-            {/* CARD 5 */}
             <div className="bg-white p-6 rounded-xl shadow">
               <FaChartLine className="text-yellow-500 text-xl mb-3" />
               <h3 className="font-semibold mb-2">SEO Auditing</h3>
@@ -104,7 +108,6 @@ export default function Page() {
 
         {/* FEATURES SECTION */}
         <div className="max-w-5xl mx-auto px-6 py-10">
-          {/* TABS */}
           <div className="flex rounded-full bg-gray-300 p-1 mb-6">
             <button className="flex-1 bg-yellow-500 text-white py-2 rounded-full">
               Technical Features
@@ -114,40 +117,24 @@ export default function Page() {
             </button>
           </div>
 
-          {/* CONTENT */}
           <div className="bg-white p-6 rounded-xl shadow space-y-3">
-            <div className="flex items-center gap-2">
-              <FaCheckCircle className="text-yellow-500" />
-              <p>Site speed optimization</p>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaCheckCircle className="text-yellow-500" />
-              <p>Mobile responsiveness</p>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaCheckCircle className="text-yellow-500" />
-              <p>Schema markup</p>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaCheckCircle className="text-yellow-500" />
-              <p>XML sitemaps</p>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaCheckCircle className="text-yellow-500" />
-              <p>Meta tag optimization</p>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaCheckCircle className="text-yellow-500" />
-              <p>Image optimization</p>
-            </div>
+            {[
+              "Site speed optimization",
+              "Mobile responsiveness",
+              "Schema markup",
+              "XML sitemaps",
+              "Meta tag optimization",
+              "Image optimization",
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <FaCheckCircle className="text-yellow-500" />
+                <p>{item}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </main>
+
       <Footer />
     </>
   );
