@@ -22,7 +22,7 @@ export default function Navbar() {
   9;
   const products = [
     { name: "YP Micro App", link: "/YpMicroApp" },
-    { name: "SEO Services" },
+    { name: "SEO Services", link: "/seo-service" },
     { name: "Google & Facebook Ads" },
     { name: "Tap & Review" },
     { name: "Yellow Shop" },
@@ -107,8 +107,19 @@ export default function Navbar() {
                           className="p-3 rounded-lg hover:bg-[#FCED23] cursor-pointer transition"
                         >
                           {/* <h4 className="font-semibold">{item}</h4> */}
+                          {/* {item === "YP Micro App" ? (
+                            <Link href="/YpMicroApp">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : (
+                            <h4 className="font-semibold">{item}</h4>
+                          )} */}
                           {item === "YP Micro App" ? (
                             <Link href="/YpMicroApp">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "SEO Services" ? (
+                            <Link href="/seo-service">
                               <h4 className="font-semibold">{item}</h4>
                             </Link>
                           ) : (
@@ -276,7 +287,7 @@ export default function Navbar() {
                     <li key={i}>{item}</li>
                   ))} */}
 
-                  {products.map((item, i) => (
+                  {/* {products.map((item, i) => (
                     <Link
                       key={i}
                       href={item.link || "#"}
@@ -288,6 +299,20 @@ export default function Navbar() {
                         Explore {item.name.toLowerCase()} solutions.
                       </p>
                     </Link>
+                  ))} */}
+                  {products.map((item, i) => (
+                    <div
+                      key={i}
+                      className="p-3 rounded-lg hover:bg-[#FCED23] cursor-pointer transition"
+                    >
+                      <Link href={item.link || "#"}>
+                        <h4 className="font-semibold">{item.name}</h4>
+                      </Link>
+
+                      <p className="text-gray-500 text-sm mt-1">
+                        Explore {item.name.toLowerCase()} solutions.
+                      </p>
+                    </div>
                   ))}
                 </ul>
               </div>
