@@ -24,9 +24,9 @@ export default function Navbar() {
     { name: "YP Micro App", link: "/YpMicroApp" },
     { name: "SEO Services", link: "/seo-service" },
     { name: "Google & Facebook Ads", link: "/GoogleFacebookads" },
-    { name: "Tap & Review" },
-    { name: "Yellow Shop" },
-    { name: "Email Marketing" },
+    { name: "Tap & Review", link: "/TapAndReview" },
+    { name: "Yellow Shop", link: "/Yellow-Shop" },
+    { name: "Email Marketing", link: "/Email-Marketing" },
     { name: "Social Media Management" },
     { name: "Yellow Connect" },
     { name: "Yellow Spot" },
@@ -106,14 +106,24 @@ export default function Navbar() {
                           key={i}
                           className="p-3 rounded-lg hover:bg-[#FCED23] cursor-pointer transition"
                         >
-                          {/* <h4 className="font-semibold">{item}</h4> */}
-
                           {/* {item === "YP Micro App" ? (
                             <Link href="/YpMicroApp">
                               <h4 className="font-semibold">{item}</h4>
                             </Link>
                           ) : item === "SEO Services" ? (
                             <Link href="/seo-service">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "Google & Facebook Ads" ? (
+                            <Link href="/GoogleFacebookads">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "Tap & Review" ? (
+                            <Link href="/TapAndReview">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "Yellow Shop" ? (
+                            <Link href="/Yellow-Shop">
                               <h4 className="font-semibold">{item}</h4>
                             </Link>
                           ) : (
@@ -130,6 +140,18 @@ export default function Navbar() {
                             </Link>
                           ) : item === "Google & Facebook Ads" ? (
                             <Link href="/GoogleFacebookads">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "Tap & Review" ? (
+                            <Link href="/TapAndReview">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "Yellow Shop" ? (
+                            <Link href="/Yellow-Shop">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "Email Marketing" ? (
+                            <Link href="/Email-Marketing">
                               <h4 className="font-semibold">{item}</h4>
                             </Link>
                           ) : (
