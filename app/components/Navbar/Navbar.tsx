@@ -20,6 +20,21 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   9;
+  // const products = [
+  //   { name: "YP Micro App", link: "/YpMicroApp" },
+  //   { name: "SEO Services", link: "/seo-service" },
+  //   { name: "Google & Facebook Ads", link: "/GoogleFacebookads" },
+  //   { name: "Tap & Review", link: "/TapAndReview" },
+  //   { name: "Yellow Shop", link: "/Yellow-Shop" },
+  //   { name: "Email Marketing", link: "/Email-Marketing" },
+  //   { name: "Social And Media Management", link: "/Social-And-Media-Management" },
+  //   { name: "Yellow Content BD", link: "/Yellow-content-bd" },
+  //   { name: "Social Media Management" },
+  //   { name: "Yellow Connect" },
+  //   { name: "Yellow Spot" },
+  //   { name: "Office 365" },
+  //   { name: "Yellow Pay" },
+  // ];
   const products = [
     { name: "YP Micro App", link: "/YpMicroApp" },
     { name: "SEO Services", link: "/seo-service" },
@@ -27,11 +42,16 @@ export default function Navbar() {
     { name: "Tap & Review", link: "/TapAndReview" },
     { name: "Yellow Shop", link: "/Yellow-Shop" },
     { name: "Email Marketing", link: "/Email-Marketing" },
-    { name: "Social Media Management" },
-    { name: "Yellow Connect" },
-    { name: "Yellow Spot" },
-    { name: "Office 365" },
-    { name: "Yellow Pay" },
+    {
+      name: "Social And Media Management",
+      link: "/Social-And-Media-Management",
+    },
+    { name: "Yellow Connect BD", link: "/yellow-connect-bd" },
+    { name: "Social Media Management", link: "/Social-And-Media-Management" },
+    { name: "Yellow Connect", link: "/Yellow-Connect" },
+    { name: "Yellow Spot", link: "/Yellow-Spot" },
+    { name: "Office 365", link: "/Office-365" },
+    { name: "Yellow Pay", link: "/Yellow-Pay" },
   ];
   return (
     <>
@@ -106,30 +126,6 @@ export default function Navbar() {
                           key={i}
                           className="p-3 rounded-lg hover:bg-[#FCED23] cursor-pointer transition"
                         >
-                          {/* {item === "YP Micro App" ? (
-                            <Link href="/YpMicroApp">
-                              <h4 className="font-semibold">{item}</h4>
-                            </Link>
-                          ) : item === "SEO Services" ? (
-                            <Link href="/seo-service">
-                              <h4 className="font-semibold">{item}</h4>
-                            </Link>
-                          ) : item === "Google & Facebook Ads" ? (
-                            <Link href="/GoogleFacebookads">
-                              <h4 className="font-semibold">{item}</h4>
-                            </Link>
-                          ) : item === "Tap & Review" ? (
-                            <Link href="/TapAndReview">
-                              <h4 className="font-semibold">{item}</h4>
-                            </Link>
-                          ) : item === "Yellow Shop" ? (
-                            <Link href="/Yellow-Shop">
-                              <h4 className="font-semibold">{item}</h4>
-                            </Link>
-                          ) : (
-                            <h4 className="font-semibold">{item}</h4>
-                          )} */}
-
                           {item === "YP Micro App" ? (
                             <Link href="/YpMicroApp">
                               <h4 className="font-semibold">{item}</h4>
@@ -152,6 +148,14 @@ export default function Navbar() {
                             </Link>
                           ) : item === "Email Marketing" ? (
                             <Link href="/Email-Marketing">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "Social Media Management" ? (
+                            <Link href="/Social-And-Media-Management">
+                              <h4 className="font-semibold">{item}</h4>
+                            </Link>
+                          ) : item === "Yellow Connect" ? ( // ✅ ADD THIS
+                            <Link href="/yellow-connect-bd">
                               <h4 className="font-semibold">{item}</h4>
                             </Link>
                           ) : (
@@ -303,35 +307,6 @@ export default function Navbar() {
                 }`}
               >
                 <ul className="pl-4 text-sm space-y-2">
-                  {/* {[
-                    "YP Micro App",
-                    "SEO Services",
-                    "Google & Facebook Ads",
-                    "Tap & Review",
-                    "Yellow Shop",
-                    "Email Marketing",
-                    "Social Media Management",
-                    "Yellow Connect",
-                    "Yellow Spot",
-                    "Office 365",
-                    "Yellow Pay",
-                  ].map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))} */}
-
-                  {/* {products.map((item, i) => (
-                    <Link
-                      key={i}
-                      href={item.link || "#"}
-                      className="p-3 rounded-lg hover:bg-[#FCED23] cursor-pointer transition block"
-                    >
-                      <h4 className="font-semibold">{item.name}</h4>
-
-                      <p className="text-gray-500 text-sm mt-1">
-                        Explore {item.name.toLowerCase()} solutions.
-                      </p>
-                    </Link>
-                  ))} */}
                   {products.map((item, i) => (
                     <div
                       key={i}
